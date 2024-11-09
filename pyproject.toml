@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "s3do"
+version = "0.1.0"
+description = "A collection of S3 commands"
+authors = ["Rob van der Leek <robvanderleek@gmail.com>"]
+
+[tool.poetry.scripts]
+s3do = "s3do.__main__:cli"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+boto3 = "^1.18.31"
+click = "^8.1.7"
+typer = "^0.13.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+moto = "^5.0.20"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

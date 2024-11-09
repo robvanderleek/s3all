@@ -1,5 +1,5 @@
 import boto3
-from moto import mock_s3
+from moto import mock_aws
 
 from s3do.tag import _tags_to_tagset, _tag_objects
 
@@ -38,7 +38,7 @@ def test_tag_to_tagset_two_elements():
     assert result[1]['Value'] == 'wim'
 
 
-@mock_s3
+@mock_aws
 def test_tag_objects():
     client = setup_client()
     client.put_object(Body='Hello world', Bucket='Aap', Key='noot.txt')

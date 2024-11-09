@@ -1,7 +1,6 @@
 # s3do
 
 [![Build Status](https://github.com/robvanderleek/s3do/workflows/CICD/badge.svg)](https://github.com/robvanderleek/s3do/actions)
-[![BCH compliance](https://bettercodehub.com/edge/badge/robvanderleek/s3do?branch=main)](https://bettercodehub.com/)
 [![DockerHub image pulls](https://img.shields.io/docker/pulls/robvanderleek/s3do)](https://hub.docker.com/repository/docker/robvanderleek/s3do)
 [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
 

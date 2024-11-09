@@ -1,7 +1,7 @@
 import gzip
 
 import boto3
-from moto import mock_s3
+from moto import mock_aws
 
 from s3do.inventory import _load_from_symlink_file
 
@@ -19,7 +19,7 @@ def setup_client():
     return client
 
 
-@mock_s3
+@mock_aws
 def test_inventory():
     client = setup_client()
 

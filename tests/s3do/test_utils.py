@@ -1,5 +1,5 @@
 import boto3
-from moto import mock_s3
+from moto import mock_aws
 
 from s3do.utils import do_for_all_objects
 
@@ -11,7 +11,7 @@ def setup_client():
     return client
 
 
-@mock_s3
+@mock_aws
 def test_do_for_all_objects_empty_bucket():
     client = setup_client()
     called = 0
@@ -25,7 +25,7 @@ def test_do_for_all_objects_empty_bucket():
     assert called == 0
 
 
-@mock_s3
+@mock_aws
 def test_do_for_all_objects_one_object():
     client = setup_client()
     client.put_object(Body='Hello world', Bucket='Aap', Key='noot.txt')
@@ -41,7 +41,7 @@ def test_do_for_all_objects_one_object():
     assert called == 1
 
 
-@mock_s3
+@mock_aws
 def test_do_for_all_objects_two_objects():
     client = setup_client()
     client.put_object(Body='Hello world', Bucket='Aap', Key='noot.txt')
