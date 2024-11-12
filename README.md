@@ -1,10 +1,20 @@
 # s3do
 
+<div align="center">
+
+![Logo](docs/logo.png)
+
+</div>
+
+<div align="center">
+
 [![Build Status](https://github.com/robvanderleek/s3do/workflows/CICD/badge.svg)](https://github.com/robvanderleek/s3do/actions)
 [![DockerHub image pulls](https://img.shields.io/docker/pulls/robvanderleek/s3do)](https://hub.docker.com/repository/docker/robvanderleek/s3do)
 [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
 
-A collection of S3 commands for bulk operations.
+</div>
+
+A collection of S3 tools.
 
 * [Installation](#installation)
 * [Usage](#usage)

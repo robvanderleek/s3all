@@ -3,7 +3,7 @@ import gzip
 import boto3
 from moto import mock_aws
 
-from s3do.inventory import _load_from_symlink_file
+from s3do.commands.inventory import _load_from_symlink_file
 
 
 def setup_client():

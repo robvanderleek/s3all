@@ -1,7 +1,6 @@
 import logging
 
 import boto3
-import click
 from botocore.exceptions import ClientError, NoCredentialsError
 
 from s3do.utils import do_for_all_objects
@@ -55,11 +54,7 @@ def _tag_objects(client, bucket, prefix, tagset):
     do_for_all_objects(client, bucket, prefix, _get_callback(client, bucket, tagset))
 
 
-@click.argument('prefix', required=False)
-@click.option('-i', '--symlink-file', help="Read objects from inventory file")
-@click.option('-p', '--prefix')
-@click.option('--tag', '-t', required=True, multiple=True)
-def tag_command(bucket: str, prefix: str, symlink_file, tag):
+def tag_command(bucket: str, prefix: str, symlink_file: str, tag: list[str]):
     tagset = _tags_to_tagset(tag)
     try:
         client = boto3.client('s3')

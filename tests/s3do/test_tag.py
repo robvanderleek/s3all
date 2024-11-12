@@ -1,7 +1,7 @@
 import boto3
 from moto import mock_aws
 
-from s3do.tag import _tags_to_tagset, _tag_objects
+from s3do.commands.tag import _tags_to_tagset, _tag_objects
 
 
 def setup_client():

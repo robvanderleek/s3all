@@ -2,7 +2,6 @@ import gzip
 import logging
 
 import boto3
-import click
 from botocore.exceptions import ClientError, NoCredentialsError
 
 from s3do.utils import do_for_all_objects
@@ -28,12 +27,7 @@ def _load_from_symlink_file(client, bucket, symlink_file, func):
             func(gzip.decompress(zipped_bytes).decode())
 
 
-@click.command()
-@click.argument('bucket')
-@click.option('-s', '--symlink-file')
-@click.option('-p', '--prefix')
-def inventory(bucket, symlink_file, prefix):
-    """List inventory from Bucket"""
+def inventory_command(bucket: str, prefix: str, symlink_file: str):
     try:
         client = boto3.client('s3')
         if symlink_file:

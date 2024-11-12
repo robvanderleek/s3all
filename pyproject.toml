@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "s3do"
 version = "0.1.0"
-description = "A collection of S3 commands"
+description = "A collection of S3 tools"
 authors = ["Rob van der Leek <robvanderleek@gmail.com>"]
 
 [tool.poetry.scripts]

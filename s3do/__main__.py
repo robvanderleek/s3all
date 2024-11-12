@@ -3,12 +3,12 @@ import logging
 import sys
 from typing import Annotated, Optional
 
-import click
 import typer
 from click import Context
 from typer.core import TyperGroup
 
-from s3do import inventory, tag
+from s3do.commands.inventory import inventory_command
+from s3do.commands.tag import tag_command
 
 
 class Unbuffered(object):
@@ -38,21 +38,31 @@ class OrderCommands(TyperGroup):
 cli = typer.Typer(no_args_is_help=True, add_completion=False)
 
 
-@click.group()
-def cli_entry_point():
-    pass
+@cli.command(help="List inventory from a bucket")
+def inventory(
+        bucket: Annotated[Optional[str], typer.Argument()] = None,
+        prefix: Annotated[Optional[str], typer.Argument()] = None,
+        symlink_file: Annotated[
+            str, typer.Option('--symlink-file', '-s')
+        ] = None
+):
+    inventory_command(bucket, prefix, symlink_file)
 
 
 @cli.command(help="Tag S3 objects")
 def tag(
+        tags: Annotated[
+            list[str], typer.Option('--tag', '-t')
+        ],
         bucket: Annotated[Optional[str], typer.Argument()] = None,
         prefix: Annotated[Optional[str], typer.Argument()] = None,
+        symlink_file: Annotated[
+            str, typer.Option('--symlink-file', '-s')
+        ] = None
 ):
-    tag.tag_command(bucket, prefix)
+    tag_command(bucket, prefix, symlink_file, tags)
 
-
-cli_entry_point.add_command(inventory.inventory)
 
 if __name__ == '__main__':
     logging.basicConfig(format='[%(asctime)s] %(levelname)s: %(message)s')
-    cli_entry_point()
+    cli()
